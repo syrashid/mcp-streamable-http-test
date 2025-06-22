@@ -7,7 +7,7 @@ brotlicffi==1.1.0.0
 chardet==5.2.0
 cohere==5.15.0
 colorama==0.4.6
-cryptography==41.0.3
+cryptography>=41.0.5,<46
 curio==1.6
 cython==3.1.2
 docutils==0.21.2
