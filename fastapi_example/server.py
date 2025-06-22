@@ -2,6 +2,7 @@ import contextlib
 from fastapi import FastAPI
 from echo_server import mcp as echo_mcp
 from math_server import mcp as math_mcp
+import os
 
 
 # Create a combined lifespan to manage both session managers
