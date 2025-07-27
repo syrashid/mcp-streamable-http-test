@@ -36,8 +36,8 @@ def web_search(query: str) -> List[Dict]:
     try:
         response = tavily_client.search(query)
         return response["results"]
-    except:
-        return "No results found"
+    except Exception as e:
+        return "Error: " + str(e)
 
 # Run the server
 if __name__ == "__main__":
