@@ -1,8 +1,4 @@
-import asyncio
-import os
-from fastmcp import FastMCP
-from starlette.requests import Request
-from starlette.responses import PlainTextResponse
+from mcp.server.fastmcp import FastMCP
 
 # Initialize FastMCP server
 # stateless_http=True is a ok as long as we don't care about preserving state
