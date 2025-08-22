@@ -8,15 +8,10 @@ from starlette.responses import PlainTextResponse
 # stateless_http=True is a ok as long as we don't care about preserving state
 # https://github.com/modelcontextprotocol/python-sdk/issues/808
 
-PORT = os.environ.get("PORT", 10000)
 mcp = FastMCP(name="physrisk", stateless_http=True)
 
-@mcp.custom_route("/health", methods=["GET"])
-async def health_check(request: Request) -> PlainTextResponse:
-    return PlainTextResponse("OK")
-
 @mcp.tool()
-async def get_physrisk_hazards(query: str) -> str:
+def get_physrisk_hazards(query: str) -> str:
     """
     Use this tool for getting the hazards.
 
@@ -31,7 +26,7 @@ async def get_physrisk_hazards(query: str) -> str:
 
 
 @mcp.tool()
-async def get_asset_vulnerability(query: str) -> str:
+def get_asset_vulnerability(query: str) -> str:
     """
     Use this tool for getting the asset vulnerability.
 
@@ -45,7 +40,7 @@ async def get_asset_vulnerability(query: str) -> str:
 
 
 @mcp.tool()
-async def get_asset_risk(query: str) -> str:
+def get_asset_risk(query: str) -> str:
     """
     Use this tool for getting the asset risk.
 
@@ -56,7 +51,3 @@ async def get_asset_risk(query: str) -> str:
         A string of the asset risk.
     """
     return f"RENDER SERVER ->Your asset risk was: {query}"
-
-
-if __name__ == "__main__":
-    mcp.run(transport="http", host="0.0.0.0", port=PORT, path="/mcp")
