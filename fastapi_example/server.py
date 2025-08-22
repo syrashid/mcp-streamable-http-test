@@ -2,6 +2,7 @@ import contextlib
 from fastapi import FastAPI
 from echo_server import mcp as echo_mcp
 from math_server import mcp as math_mcp
+from physrisk_server import mcp as physrisk_mcp
 import os
 
 
@@ -11,12 +12,14 @@ async def lifespan(app: FastAPI):
     async with contextlib.AsyncExitStack() as stack:
         await stack.enter_async_context(echo_mcp.session_manager.run())
         await stack.enter_async_context(math_mcp.session_manager.run())
+        await stack.enter_async_context(physrisk_mcp.session_manager.run())
         yield
 
 
 app = FastAPI(lifespan=lifespan)
 app.mount("/echo", echo_mcp.streamable_http_app())
 app.mount("/math", math_mcp.streamable_http_app())
+app.mount("/physrisk", physrisk_mcp.streamable_http_app())
 
 PORT = os.environ.get("PORT", 10000)
 
