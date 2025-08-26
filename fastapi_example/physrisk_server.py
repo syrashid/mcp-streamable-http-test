@@ -18,7 +18,7 @@ def get_physrisk_hazards(query: str) -> str:
         A string of the hazards.
 
     """
-    return f"RENDER ERVER -> Your hazard was: {query}"
+    return f"RENDER SERVER -> Your hazard was: {query}"
 
 
 @mcp.tool()
