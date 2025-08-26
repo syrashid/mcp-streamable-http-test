@@ -27,27 +27,6 @@ This starts a FastAPI app with three MCP servers mounted at:
 - `http://localhost:10000/math/mcp/`
 - `http://localhost:10000/physrisk/mcp/`
 
-## Connect to Cursor
-
-In Cursor, add your MCP server under Chat Settings > MCP Servers:
-```json
-{
-  "mcpServers": {
-    "echo": {
-      "url": "http://localhost:10000/echo/mcp/"
-    },
-    "math": {
-      "url": "http://localhost:10000/math/mcp/"
-    },
-    "physrisk": {
-      "url": "http://localhost:10000/physrisk/mcp/"
-    }
-  }
-}
-```
-
-**Note**: Include the trailing `/` in the URL.
-
 ## Project Structure
 
 ```
